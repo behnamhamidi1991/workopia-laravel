@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use App\Models\Job;
 
 class JobController extends Controller
 {
@@ -12,14 +13,9 @@ class JobController extends Controller
      */
     public function index(): View
     {
-        $jobs = [
-            'Web Developer',
-            'Database Admin',
-            'Software Engineer',
-            'Systems Analyst'
-        ];
+        $jobs = Job::all();
 
-        return view('jobs.index', compact('jobs'));
+        return view('jobs.index')->with('jobs', $jobs);
     }
 
     /**
@@ -41,9 +37,9 @@ class JobController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id): string
+    public function show(Job $job): View
     {
-        //
+        return view('jobs.show')->with('job', $job);
     }
 
     /**
