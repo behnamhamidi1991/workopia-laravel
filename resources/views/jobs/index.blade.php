@@ -10,7 +10,9 @@
     <ul>
         @foreach ($jobs as $job)
         <li>
-            <h4 class="font-light text-2xl">{{$job->title}}</h4>
+            <a href="{{route('jobs.show', $job->id)}}">
+                <h4 class="font-light text-2xl">{{$job->title}}</h4>
+            </a>
             <p>{{$job->description}}</p>
         </li>
         @endforeach
